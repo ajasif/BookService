@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Properties>
+        <Property name="log-path">/usr/local/wildfly/standalone/log</Property>
+    </Properties>    
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy-MMM-dd HH:mm:ss a} [%t] %-5level %logger{36} - %msg%n" />
+        </Console>            
+    </Appenders>
+    <Loggers>
+        <Logger name="root" level="debug" additivity="false">
+            <appender-ref ref="Console" level="debug"/>
+        </Logger>        
+    </Loggers>
+</Configuration>
