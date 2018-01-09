@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+    <persistence-unit name="BookService" transaction-type="JTA">
+        <jta-data-source>java:/MySqlDS</jta-data-source>
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+        <!-- <class>com.swigel.iex.kafka.consumer.IexTopsData</class> -->
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <properties>
+			
+            <property name="hibernate.show_sql" value="false"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
+            <property name="hibernate.enable_lazy_load_no_trans" value="true"/>
+            <property name="hibernate.id.new_generator_mappings" value="false"/>
+            <property name="wildfly.jpa.twophasebootstrap" value="false"/>
+            <property name="jboss.as.jpa.classtransformer" value="false"/>
+            <property name="hibernate.jdbc.batch_size" value="1" />
+            <property name="hibernate.jdbc.batch_versioned_data" value="true" />
+            <property name="hibernate.order_inserts" value="true" />
+            <property name="hibernate.order_updates" value="true" />
+            <property name="hibernate.cache.use_second_level_cache" value="false" />
+            <property name="hibernate.connection.autocommit" value="false" />                 
+        </properties> 
+		 
+    </persistence-unit>
+</persistence>
