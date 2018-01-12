@@ -1,3 +1,5 @@
+book\BookData.class
 book\BookDao.class
+book\CORSFilter.class
 book\BookRestApp.class
 book\BookRestWS.class

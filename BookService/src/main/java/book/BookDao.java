@@ -30,10 +30,10 @@ public class BookDao {
 
     }
     
-    public List<String> bookTitles() {
-    	Query q = em.createNativeQuery("SELECT b.title FROM book b");
+    public List<BookData> getBookTitles() {
+    	Query q = em.createNativeQuery("SELECT * FROM book b", BookData.class);
     	@SuppressWarnings("unchecked")
-		List<String> bookIds = q.getResultList();
+		List<BookData> bookIds = q.getResultList();
     	return bookIds;
     }
 
