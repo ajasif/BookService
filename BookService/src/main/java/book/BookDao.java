@@ -27,14 +27,29 @@ public class BookDao {
     
     @PostConstruct
     public void init() {
-
+    	logger.info("Creating dao");
     }
     
-    public List<BookData> getBookTitles() {
+    @SuppressWarnings("unchecked")
+	public List<BookData> getAllBookReviews() {
     	Query q = em.createNativeQuery("SELECT * FROM book b", BookData.class);
-    	@SuppressWarnings("unchecked")
-		List<BookData> bookIds = q.getResultList();
-    	return bookIds;
+		List<BookData> bookData = q.getResultList();
+    	return bookData;
+    }
+    
+    public BookData getBookReview(String title, String user) {
+    	Query q = em.createNativeQuery("SELECT * FROM book b WHERE b.title = " + title
+    			+ "AND b.user = " + user, BookData.class);
+    	BookData bookData = (BookData) q.getSingleResult();
+    	return bookData;
+    }
+    
+    public void addReview(BookData bookData) {
+    	em.persist(bookData);
+    }
+    
+    public void updateReview(BookData bookData) {
+    	em.merge(bookData);
     }
 
 //    public void save(Weather_OWM_Current weatherData) {
@@ -94,6 +109,6 @@ public class BookDao {
 //   
     @PreDestroy
     public void exitThread() {
-    	logger.info("Destroying Dao");
+    	logger.info("Destroying Dao.");
     }
 }
