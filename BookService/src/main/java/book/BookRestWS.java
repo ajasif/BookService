@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -63,6 +64,17 @@ public class BookRestWS {
 		}
 		bookDao.updateReview(bookData);
 		String output = "POST: Added a book review to the database!";
+		return Response.status(200).entity(output).build();
+	}
+	
+	@DELETE
+	@Path("/delete-review/{title}/{user}")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON) 
+	public Response deleteBookReview(@PathParam("title") String title,
+		      @PathParam("user") String username) {
+		bookDao.deleteReview(title, username);
+		String output = "Delete: Deleted a book review from the database!";
 		return Response.status(200).entity(output).build();
 	}
 }

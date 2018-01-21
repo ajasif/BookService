@@ -51,6 +51,11 @@ public class BookDao {
     public void updateReview(BookData bookData) {
     	em.merge(bookData);
     }
+    
+    public void deleteReview(String title, String username) {
+    	em.createNativeQuery("DELETE FROM book b WHERE b.title = "
+    			+ title + " AND b.username = " + username);
+    }
 
 //    public void save(Weather_OWM_Current weatherData) {
 //    	if (weatherData == null) return;
